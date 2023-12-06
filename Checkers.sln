@@ -1,0 +1,72 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33502.453
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Checkers", "Checkers\Checkers.csproj", "{EFEE0D21-49B7-4631-BB58-4971D287B6A9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BC8ACF44-23F0-410D-B3B1-235316A47BEF} = {BC8ACF44-23F0-410D-B3B1-235316A47BEF}
+		{0482A783-34FB-4119-9127-37B4ACEE7204} = {0482A783-34FB-4119-9127-37B4ACEE7204}
+		{88EADCF1-519D-4596-88AA-A3EA3A5DB9D8} = {88EADCF1-519D-4596-88AA-A3EA3A5DB9D8}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckersBase", "CheckersBase\CheckersBase.csproj", "{BC8ACF44-23F0-410D-B3B1-235316A47BEF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestCheckersRules", "TestCheckersRules\TestCheckersRules.csproj", "{4C557880-C44F-4292-9685-4D3E21FB776A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{EFEE0D21-49B7-4631-BB58-4971D287B6A9} = {EFEE0D21-49B7-4631-BB58-4971D287B6A9}
+		{BC8ACF44-23F0-410D-B3B1-235316A47BEF} = {BC8ACF44-23F0-410D-B3B1-235316A47BEF}
+		{88EADCF1-519D-4596-88AA-A3EA3A5DB9D8} = {88EADCF1-519D-4596-88AA-A3EA3A5DB9D8}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckersRules", "CheckersRules\CheckersRules.csproj", "{0482A783-34FB-4119-9127-37B4ACEE7204}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BC8ACF44-23F0-410D-B3B1-235316A47BEF} = {BC8ACF44-23F0-410D-B3B1-235316A47BEF}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgentSmith", "AgentSmith\AgentSmith.csproj", "{88EADCF1-519D-4596-88AA-A3EA3A5DB9D8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BC8ACF44-23F0-410D-B3B1-235316A47BEF} = {BC8ACF44-23F0-410D-B3B1-235316A47BEF}
+		{0482A783-34FB-4119-9127-37B4ACEE7204} = {0482A783-34FB-4119-9127-37B4ACEE7204}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AI_Lab4", "AI_Lab4\AI_Lab4.csproj", "{E0AE374A-5309-42C1-8375-B39D7DCCA2F9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EFEE0D21-49B7-4631-BB58-4971D287B6A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFEE0D21-49B7-4631-BB58-4971D287B6A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFEE0D21-49B7-4631-BB58-4971D287B6A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFEE0D21-49B7-4631-BB58-4971D287B6A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC8ACF44-23F0-410D-B3B1-235316A47BEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC8ACF44-23F0-410D-B3B1-235316A47BEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC8ACF44-23F0-410D-B3B1-235316A47BEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC8ACF44-23F0-410D-B3B1-235316A47BEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C557880-C44F-4292-9685-4D3E21FB776A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C557880-C44F-4292-9685-4D3E21FB776A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C557880-C44F-4292-9685-4D3E21FB776A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C557880-C44F-4292-9685-4D3E21FB776A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0482A783-34FB-4119-9127-37B4ACEE7204}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0482A783-34FB-4119-9127-37B4ACEE7204}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0482A783-34FB-4119-9127-37B4ACEE7204}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0482A783-34FB-4119-9127-37B4ACEE7204}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88EADCF1-519D-4596-88AA-A3EA3A5DB9D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88EADCF1-519D-4596-88AA-A3EA3A5DB9D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88EADCF1-519D-4596-88AA-A3EA3A5DB9D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88EADCF1-519D-4596-88AA-A3EA3A5DB9D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0AE374A-5309-42C1-8375-B39D7DCCA2F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0AE374A-5309-42C1-8375-B39D7DCCA2F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0AE374A-5309-42C1-8375-B39D7DCCA2F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0AE374A-5309-42C1-8375-B39D7DCCA2F9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DC95C408-8AF4-4588-B55C-2F33E4F5F435}
+	EndGlobalSection
+EndGlobal

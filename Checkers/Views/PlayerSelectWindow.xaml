@@ -1,0 +1,85 @@
+﻿<Window x:Class="Checkers.Views.PlayerSelectWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Выбор игроков" SizeToContent="WidthAndHeight"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:viewModels="clr-namespace:Checkers.ViewModels"
+        xmlns:command="http://www.galasoft.ch/mvvmlight"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        mc:Ignorable="d" 
+        d:DataContext="{d:DesignInstance Type=viewModels:PlayersSelectViewModel}"
+		AllowDrop="True"
+        >
+	<i:Interaction.Triggers>
+		<i:EventTrigger EventName="Drop">
+			<command:EventToCommand Command="{Binding Path=FileDropCommand}"
+                            PassEventArgsToCommand="True" />
+		</i:EventTrigger>
+	</i:Interaction.Triggers>
+	<Grid Margin="20" AllowDrop="True">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition/>
+			<ColumnDefinition Width="10"/>
+			<ColumnDefinition/>
+		</Grid.ColumnDefinitions>
+
+		<Label Content="Белый" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+		<Label Content="Черный" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2"/>
+
+		<StackPanel Grid.Row="1" Orientation="Horizontal">
+			<TextBlock Text="Выбран игрок:" />
+			<TextBlock FontWeight="Bold"  Text="{Binding Path=SelectedWhite.Name}"/>
+		</StackPanel>
+
+		<StackPanel Grid.Row="1" Grid.Column="2" Orientation="Horizontal" >
+			<TextBlock>Выбран игрок:</TextBlock>
+			<TextBlock FontWeight="Bold" Text="{Binding Path=SelectedBlack.Name}"/>
+		</StackPanel>
+
+		<DataGrid x:Name="dgWhiteAI" ItemsSource="{Binding Path=Bots}" Grid.Row="3" CanUserAddRows="False" AutoGenerateColumns="False" >
+			<DataGrid.InputBindings>
+				<MouseBinding Gesture="LeftDoubleClick" Command="{Binding Path=SelectWhiteAIPlayerCommand}" CommandParameter="{Binding ElementName=dgWhiteAI, Path=SelectedItem}" />
+			</DataGrid.InputBindings>
+			<DataGrid.Columns>
+				<DataGridTextColumn Header="Имя"            Binding="{Binding Path=Name}"           IsReadOnly="True"/>
+				<DataGridTextColumn Header="Студент"        Binding="{Binding Path=StudentFIO}"     IsReadOnly="True"/>
+				<DataGridTextColumn Header="Группа"         Binding="{Binding Path=StudentGroup}"   IsReadOnly="True"/>
+                <DataGridTextColumn Header="Победы"         Binding="{Binding Path=Wins}"           IsReadOnly="True"/>
+                <DataGridTextColumn Header="Поражения"      Binding="{Binding Path=Loses}"          IsReadOnly="True"/>
+                <DataGridTextColumn Header="Ничьи"          Binding="{Binding Path=Draws}"          IsReadOnly="True"/>
+                <DataGridTextColumn Header="Процент побед"  Binding="{Binding Path=WinRate}"        IsReadOnly="True"/>
+			</DataGrid.Columns>
+		</DataGrid>
+
+		<DataGrid x:Name="dgBlackAI" ItemsSource="{Binding Path=Bots}" Grid.Row="3" Grid.Column="2" CanUserAddRows="False" AutoGenerateColumns="False" >
+			<DataGrid.InputBindings>
+				<MouseBinding Gesture="LeftDoubleClick" Command="{Binding Path=SelectBlackAIPlayerCommand}" CommandParameter="{Binding ElementName=dgBlackAI, Path=SelectedItem}" />
+			</DataGrid.InputBindings>
+			<DataGrid.Columns>
+                <DataGridTextColumn Header="Имя"            Binding="{Binding Path=Name}"           IsReadOnly="True"/>
+                <DataGridTextColumn Header="Студент"        Binding="{Binding Path=StudentFIO}"     IsReadOnly="True"/>
+                <DataGridTextColumn Header="Группа"         Binding="{Binding Path=StudentGroup}"   IsReadOnly="True"/>
+                <DataGridTextColumn Header="Победы"         Binding="{Binding Path=Wins}"           IsReadOnly="True"/>
+                <DataGridTextColumn Header="Поражения"      Binding="{Binding Path=Loses}"          IsReadOnly="True"/>
+                <DataGridTextColumn Header="Ничьи"          Binding="{Binding Path=Draws}"          IsReadOnly="True"/>
+                <DataGridTextColumn Header="Процент побед"  Binding="{Binding Path=WinRate}"        IsReadOnly="True"/>
+            </DataGrid.Columns>
+		</DataGrid>
+
+
+		<Button Grid.Row="2" Command="{Binding Path=SelectWhitePlayerHuman}">Человек</Button>
+		<Button Grid.Row="2" Grid.Column="2" Command="{Binding Path=SelectBlackPlayerHuman}">Человек</Button>
+		<StackPanel Orientation="Horizontal" Grid.Row="4" Grid.ColumnSpan="3" HorizontalAlignment="Center">
+			<Button Content="OK" Margin="20" Width="40" Height="30" Command="{Binding Path=OKCommand}" IsDefault="True"/>
+			<Button Content="Cancel" Margin="20" Width="60" Height="30" Command="{Binding Path=CancelCommand}" IsCancel="True"/>
+		</StackPanel>
+	</Grid>
+</Window>

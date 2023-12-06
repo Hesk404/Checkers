@@ -1,0 +1,47 @@
+﻿<Window x:Class="Checkers.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:checkers="clr-namespace:Checkers"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:views="clr-namespace:Checkers.Views"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:viewModels="clr-namespace:Checkers.ViewModels"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance Type=viewModels:MainViewModel}"
+        Height="436.806" Width="600"
+        Title="Шашки" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="Auto" MinWidth="200" />
+        </Grid.ColumnDefinitions>
+        <Menu Grid.ColumnSpan="2">
+			<MenuItem Header="Файл">
+				<MenuItem Header="Выход" Click="MenuItemExit_OnClick"></MenuItem>
+			</MenuItem>
+            <MenuItem Header="Начать игру" Command="{Binding Path=NewGameCommand}" />
+			<MenuItem Header="Турнир" Command="{Binding Path=StartTournamentCommand}" />
+            <MenuItem Header="Выбор игроков" Command="{Binding Path=ChoosePlayersCommand}"></MenuItem>
+			<MenuItem Header="Настройки" Command="{Binding Path=SettingsCommand}" />
+            <MenuItem Header="Просмотр записей" IsEnabled="False" />
+        </Menu>
+
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical" DockPanel.Dock="Right">
+            <views:HistoryView DataContext="{Binding Path=HistoryVM}"/>
+        </StackPanel>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*" />
+                <RowDefinition Height="80*" />
+                <RowDefinition Height="10*" />
+            </Grid.RowDefinitions>
+            <views:PlayerUserControl DataContext="{Binding BlackPlayer}"/>
+            <checkers:ChessBoard DataContext="{Binding BoardVM, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Width="{Binding RelativeSource={RelativeSource Self}, Path=ActualHeight}"/>
+            <views:PlayerUserControl DataContext="{Binding WhitePlayer}" Grid.Row="2" Height="39" VerticalAlignment="Top"/>
+        </Grid>
+    </Grid>
+</Window>

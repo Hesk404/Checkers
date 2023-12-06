@@ -1,0 +1,59 @@
+﻿<Window x:Class="Checkers.Views.TournamentSettignsWindow "
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Настройки турнира"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:viewModels="clr-namespace:Checkers.ViewModels"
+        mc:Ignorable="d" 
+		d:DataContext="{d:DesignInstance Type=viewModels:TournamentSettingsViewModel}"
+		SizeToContent="WidthAndHeight"
+		>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+		</Grid.RowDefinitions>
+		<Grid>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto"/>
+				<ColumnDefinition Width="Auto"/>
+				<ColumnDefinition Width="Auto"/>
+			</Grid.ColumnDefinitions>
+			<DataGrid ItemsSource="{Binding Path=Bots}" AutoGenerateColumns="False" x:Name="dgSourceBots">
+				<DataGrid.Columns>
+                    <DataGridTextColumn Header="Имя"            Binding="{Binding Path=Name}"           IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Студент"        Binding="{Binding Path=StudentFIO}"     IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Группа"         Binding="{Binding Path=StudentGroup}"   IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Победы"         Binding="{Binding Path=Wins}"           IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Поражения"      Binding="{Binding Path=Loses}"          IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Ничьи"          Binding="{Binding Path=Draws}"          IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Процент побед"  Binding="{Binding Path=WinRate}"        IsReadOnly="True"/>
+                </DataGrid.Columns>
+			</DataGrid>
+			<StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center">
+				<Button Content="-&gt;" MinWidth="40" Margin="5" Click="btnMoveToSelected_Click"/>
+				<Button Content="&lt;-" MinWidth="40" Margin="5"  Click="btnRemoveFromSelected_Click"/>
+			</StackPanel>
+			<DataGrid ItemsSource="{Binding Path=SelectedBots}" Grid.Column="2" AutoGenerateColumns="False" x:Name="dgSelectedBots">
+				<DataGrid.Columns>
+					<DataGridTextColumn Binding="{Binding Path=Name}" Header="Имя"  IsReadOnly="True"/>
+					<DataGridTextColumn Binding="{Binding Path=StudentFIO}" Header="Студент" IsReadOnly="True" />
+					<DataGridTextColumn Binding="{Binding Path=StudentGroup}" Header="Группа" IsReadOnly="True" />
+				</DataGrid.Columns>
+			</DataGrid>
+		</Grid>
+		<GroupBox Grid.Row="1" Header="Количество партий в раунде">
+			<TextBox Text="{Binding Path=NumberOfGamesPerFight}" />
+		</GroupBox>
+		<GroupBox Grid.Row="2" Header="Максимум параллельных потоков">
+			<TextBox Text="{Binding Path=MaxThreads}" />
+		</GroupBox>
+		<StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
+			<Button Content="Начать турнир" Command="{Binding Path=StartTourmanentCommand}" Margin="5" />
+			<Button Content="Отмена" Command="{Binding Path=CancelCommand}" Margin="5" />
+		</StackPanel>
+	</Grid>
+</Window>
